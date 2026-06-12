@@ -21,7 +21,7 @@ export const requireAuth = async (req: AuthRequest, res: Response, next: NextFun
 
         const secret = authHeader.split(" ")[1];
 
-        // 2. Spin up an Appwrite client scoped ONLY to this user's secret
+
         const client = new Client()
             .setEndpoint(process.env.APPWRITE_ENDPOINT as string)
             .setProject(process.env.APPWRITE_PROJECT_ID as string)

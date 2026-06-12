@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { R2 } from "../cloudflare/r2.bucket";
+import { requireAuth } from "../middleware/auth.middleware";
 
 const router = Router();
 
-router.post('/presigned_upload_uri', async (req, res) => {
+router.post('/presigned_upload_uri', requireAuth, async (req, res) => {
     const { fileName, contentType } = req.body;
     if (!fileName || !contentType) {
         return res.status(400).json({ message: "Filename and content type are required" });
@@ -17,7 +18,7 @@ router.post('/presigned_upload_uri', async (req, res) => {
     }
 });
 
-router.post('/presigned_download_uri', async (req, res) => {
+router.post('/presigned_download_uri', requireAuth, async (req, res) => {
     const { fileName } = req.body;
     if (!fileName) {
         return res.status(400).json({ message: "Filename is required" });

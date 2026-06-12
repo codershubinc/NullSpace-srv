@@ -1,8 +1,8 @@
 import express from 'express';
 import authRoutes from './src/routes/auth.routes';
 import r2Routes from './src/routes/r2.routes';
-import * as dotenv from 'dotenv';
-import { requireAuth } from './src/middleware/auth.middleware';
+import dbRoutes from './src/routes/db.routes';
+import * as dotenv from 'dotenv'; 
 import cors from 'cors';
 
 dotenv.config();
@@ -16,10 +16,8 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello, World! from NullSpace Server');
 });
-app.use('/r2', (req, res, next) => {
-    requireAuth(req, res, next);
-}, r2Routes);
-
+app.use('/r2', r2Routes);
+app.use('/db', dbRoutes);
 app.use('/auth', authRoutes);
 
 
