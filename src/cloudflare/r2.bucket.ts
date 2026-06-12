@@ -1,4 +1,4 @@
-import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { R2_CONFIG } from "./r2.config";
 import { r2Client } from "./r2.client";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
@@ -29,7 +29,7 @@ class r2 {
         filename: string
     ) {
         try {
-            const command = new PutObjectCommand({
+            const command = new GetObjectCommand({
                 Bucket: R2_CONFIG.bucketName,
                 Key: filename,
             });

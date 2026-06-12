@@ -16,7 +16,7 @@ router.post('/', requireAuth, async (req: AuthRequest, res) => {
         const newDocument = await DB.createDoc(
             req.user!.$id,
             fileName,
-            fileKey,
+            req.user!.$id + "/" + Date.now() + "_" + fileName,
             contentType,
             sizeBytes,
             category,
