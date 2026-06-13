@@ -16,7 +16,7 @@ router.post('/', requireAuth, async (req: AuthRequest, res) => {
         const newDocument = await DB.createDoc(
             req.user!.$id,
             fileName,
-            req.user!.$id + "/" + Date.now() + "_" + fileName,
+            fileKey,
             contentType,
             sizeBytes,
             category,
@@ -25,8 +25,7 @@ router.post('/', requireAuth, async (req: AuthRequest, res) => {
         );
 
         return res.status(201).json({
-            message: "Document successfully indexed in Vault",
-            document: newDocument
+            newDocument
         });
 
     } catch (error: any) {
@@ -40,11 +39,9 @@ router.get('/', requireAuth, async (req: AuthRequest, res) => {
         const secret = req.headers.authorization!.split(" ")[1];
         const documentList = await DB.getAllDocuments(secret || "");
 
-        return res.status(200).json({
-            message: "Vault contents retrieved",
-            total: documentList.total,
-            documents: documentList.documents
-        });
+        console.log("Documents :: ", documentList);
+
+        return res.status(200).json(documentList);
 
     } catch (error: any) {
         console.error("[Database] Failed to fetch vault:", error.message);

@@ -20,7 +20,7 @@ class r2 {
 
             return signedUrl;
         } catch (error: any) {
-            console.error("[Storage] Upload URL generation failed:", error);
+            console.error("[R2 Storage] Upload URL generation failed:", error);
             throw new Error("Failed to generate upload URL");
         }
     }
@@ -39,7 +39,7 @@ class r2 {
 
             return signedUrl;
         } catch (error: any) {
-            console.error("[Storage] Download URL generation failed:", error);
+            console.error("[R2 Storage] Download URL generation failed:", error);
             throw new Error("Failed to generate download URL");
         }
     }

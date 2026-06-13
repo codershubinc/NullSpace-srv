@@ -10,10 +10,11 @@ router.post('/presigned_upload_uri', requireAuth, async (req: AuthRequest, res) 
         return res.status(400).json({ message: "Filename and content type are required" });
     }
     try {
-        const signedUrl = await R2.getUploadUrl(req.user!.$id + "/" + Date.now() + "_" + fileName, contentType);
+        const fileKey = req.user!.$id + "/" + Date.now() + "_" + fileName;
+        const signedUrl = await R2.getUploadUrl(fileKey, contentType);
         return res.status(200).json({
             signedUrl: signedUrl,
-            fileKey: req.user!.$id + "/" + Date.now() + "_" + fileName
+            fileKey: fileKey
         });
     } catch (error: any) {
         console.error("[R2] Failed to generate signed URL:", error);
