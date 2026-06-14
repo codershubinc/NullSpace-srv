@@ -7,5 +7,7 @@ export const r2Client = new S3Client({
     credentials: {
         accessKeyId: R2_CONFIG.accessKeyId,
         secretAccessKey: R2_CONFIG.secretAccessKey
-    }
+    },
+    requestChecksumCalculation: "WHEN_REQUIRED",
+    forcePathStyle: true
 })
