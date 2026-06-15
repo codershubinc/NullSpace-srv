@@ -16,9 +16,7 @@ router.post('/login', async (req, res) => {
 
         const userSession = await AUTH.login(email, password);
 
-        console.log(`[Auth] Successful login for: ${email}`);
         if (!userSession || !userSession.secret) {
-            console.error(`[Auth] Login failed for ${email}: No session secret returned`);
             return res.status(500).json({ message: "Login failed: No session secret returned" });
         }
 
