@@ -11,7 +11,6 @@ router.post('/login', async (req, res) => {
     }
 
     const clientType = req.headers['x-client-type'] || 'Unknown Client';
-    console.log(`[Auth] Attempting login for: ${email}`);
 
     try {
 

@@ -13,7 +13,6 @@ export interface AuthRequest extends Request {
 export const requireAuth = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const authHeader = req.headers.authorization;
-        console.log("AuthHeaders", authHeader);
 
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
             return res.status(401).json({ message: "Unauthorized: Missing session token" });

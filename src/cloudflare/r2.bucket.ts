@@ -13,12 +13,6 @@ class r2 {
                 Bucket: R2_CONFIG.bucketName,
                 Key: filename,
                 ContentType: contentType,
-
-            });
-            console.table({
-                Bucket: R2_CONFIG.bucketName,
-                Key: filename,
-                ContentType: contentType,
             });
 
             const signedUrl = await getSignedUrl(
@@ -30,7 +24,6 @@ class r2 {
                     unhoistableHeaders: new Set(["x-amz-checksum-crc32", "x-amz-checksum-sha256"])
                 },
             );
-            console.log('Signed url', signedUrl);
 
             return signedUrl;
         } catch (error: any) {
@@ -49,7 +42,6 @@ class r2 {
             });
 
             const signedUrl = await getSignedUrl(r2Client, command, { expiresIn: 3600 });
-            console.log('Signed url', signedUrl);
 
             return signedUrl;
         } catch (error: any) {
