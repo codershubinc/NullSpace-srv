@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { AUTH } from "../appwrite/auth";
+import { AUTH } from "../appwrite/auth.ts";
 
 const router = Router();
 

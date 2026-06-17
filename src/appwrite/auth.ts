@@ -1,5 +1,5 @@
 import { Account, AppwriteException } from "node-appwrite";
-import { client } from "./client";
+import { client } from "./client.ts";
 
 class auth {
     account = new Account(client);

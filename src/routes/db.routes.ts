@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { DB } from "../appwrite/db.appwrite";
-import { requireAuth, type AuthRequest } from "../middleware/auth.middleware";
+import { DB } from "../appwrite/db.appwrite.ts";
+import { requireAuth, type AuthRequest } from "../middleware/auth.middleware.ts";
 
 const router = Router();
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { R2 } from "../cloudflare/r2.bucket";
-import { requireAuth, type AuthRequest } from "../middleware/auth.middleware";
+import { R2 } from "../cloudflare/r2.bucket.ts";
+import { requireAuth, type AuthRequest } from "../middleware/auth.middleware.ts";
 
 const router = Router();
 
