@@ -6,7 +6,7 @@ const router = Router();
 
 router.post('/', requireAuth, async (req: AuthRequest, res) => {
     try {
-        const { fileName, fileKey, contentType, sizeBytes, category, isShared, docHolder } = req.body;
+        const { fileName, fileKey, contentType, sizeBytes, category, isShared, docHolder, docOf } = req.body;
 
         if (!fileName || !fileKey || !contentType || !sizeBytes || fileKey === 'undefined') {
             return res.status(400).json({ message: "Missing required document metadata" });
@@ -22,7 +22,8 @@ router.post('/', requireAuth, async (req: AuthRequest, res) => {
             category,
             isShared,
             secret || "",
-            docHolder
+            docHolder,
+            docOf
 
         );
 
