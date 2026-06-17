@@ -19,7 +19,8 @@ class db {
         sizeBytes: number,
         category: string,
         isShared: boolean,
-        secret: string
+        secret: string,
+        docHolder: string
     ) {
         try {
             const database = this.getIsolatedDatabase(secret);
@@ -35,7 +36,8 @@ class db {
                     contentType: contentType,
                     sizeBytes: sizeBytes,
                     category: category || "Uncategorized",
-                    isShared: isShared || false
+                    isShared: isShared || false,
+                    docHolder: docHolder || "Unknown"
                 }
             )
         } catch (error: any) {
