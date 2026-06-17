@@ -6,6 +6,10 @@
   "devDependencies": {
     "@types/bun": "latest"
   },
+  "scripts": {
+    "dev": "bun --bun next dev",
+    "build": "bun --bun next build"
+  },
   "peerDependencies": {
     "typescript": "^5"
   },
